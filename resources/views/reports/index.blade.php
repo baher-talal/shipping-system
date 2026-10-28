@@ -2,7 +2,7 @@
 @section('title', __('Reports'))
 @section('heading', __('Reports'))
 @section('actions')
-    <a href="{{ route('reports.export', request()->query()) }}" class="btn btn-success"><i class="bi bi-file-earmark-spreadsheet"></i> {{ __('Export') }} CSV</a>
+    <a href="{{ route('reports.export', request()->query()) }}" class="btn btn-success"><i class="bi bi-file-earmark-spreadsheet"></i> {{ __('Export CSV') }}</a>
     <button class="btn btn-outline-dark" onclick="window.print()"><i class="bi bi-printer"></i> {{ __('Print') }}</button>
 @endsection
 @section('content')

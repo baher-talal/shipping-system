@@ -68,9 +68,13 @@ Open: <http://localhost:8000>
 
 - The system is bilingual: an **English / العربية** button in the top bar and on the login and public tracking pages.
 - The chosen language is stored in a cookie for one year, and the page direction switches automatically (RTL <-> LTR).
-- **The source code is written in English.** UI texts are written as `__('English text')`; the Arabic translations live in `resources/lang/ar.json` (key = English text).
-- Validation messages: `resources/lang/en/validation.php` and `resources/lang/ar/validation.php`.
-- To add a new text: write it in code as `__('Your English text')`, then add its Arabic translation to `resources/lang/ar.json`.
+- **All the texts of the site are in just two files:**
+  - `resources/lang/en.json` - English texts
+  - `resources/lang/ar.json` - Arabic texts
+- Each file has the same keys (the key is the English text used in the code). To change a word, edit the **value** (right side) in the file of that language; to rename it everywhere in one language you never touch the code.
+- The same two files also hold the validation, login and pagination messages (keys starting with `validation.`, `auth.`, `pagination.`, `passwords.`).
+- To add a new text: write it in code as `__('Your English text')`, then add the same key to **both** files.
+- After editing run `php artisan view:clear`.
 - The default language is set in `config/app.php` (`locale`).
 
 ## Roles and permissions (job hierarchy)
@@ -96,7 +100,7 @@ app/Console/Commands  CheckDelayedShipments (shipments:check-delays)
 database/migrations   Database tables, roles and permissions, extra shipment fields
 database/seeds        Demo data
 resources/views       Blade views (RTL/LTR)
-resources/lang        ar.json (Arabic translations), en/ and ar/ (validation messages)
+resources/lang        en.json + ar.json (all site texts), en/ and ar/ (thin PHP wrappers that read the JSON files)
 routes/web.php        Routes
 config/shipping.php   Tax, delivery days and price estimate settings
 config/permissions.php Permission list and default roles

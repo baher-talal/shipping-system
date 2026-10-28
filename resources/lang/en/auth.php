@@ -1,6 +1,4 @@
 <?php
 
-return [
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-];
+// The texts of this group are edited in resources/lang/en.json (keys starting with "auth.")
+return \App\Support\LangFile::group('en', 'auth');

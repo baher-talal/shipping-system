@@ -20,7 +20,7 @@
     <input type="hidden" name="customer_id" value="{{ $customer->id }}">
 
     <div class="card mb-3"><div class="card-body">
-        <label class="form-label fw-semibold">{{ __('Invoice basis (can be issued for any shipment: prepaid or') }} COD)</label>
+        <label class="form-label fw-semibold">{{ __('Invoice basis (any shipment: prepaid or COD)') }}</label>
         <div class="row g-2">
             @php $basisOld = old('basis', 'shipping'); @endphp
             <div class="col-lg-4"><label class="border rounded p-2 d-flex gap-2 h-100" style="cursor:pointer">
@@ -48,7 +48,7 @@
                     <td>{{ $s->tracking_number }}</td>
                     <td>{{ $s->receiver_name }}<div class="small text-muted">{{ $s->receiver_city }}</div></td>
                     <td>{{ $s->statusLabel() }}</td>
-                    <td><span class="badge bg-{{ $s->cod_amount > 0 ? 'warning text-dark' : 'secondary' }}">{{ $s->cod_amount > 0 ? 'COD' : __('No collection') }}</span></td>
+                    <td><span class="badge bg-{{ $s->cod_amount > 0 ? 'warning text-dark' : 'secondary' }}">{{ $s->cod_amount > 0 ? __('COD') : __('No collection') }}</span></td>
                     <td>{{ number_format($s->shipping_cost, 2) }}</td>
                     <td>{{ number_format($s->goods_value, 2) }}</td>
                     <td>{{ number_format($s->total_amount, 2) }}</td>

@@ -43,7 +43,7 @@
     <div class="row text-center">
         <div class="col-3"><div class="small text-muted">{{ __('Weight') }}</div><strong>{{ $shipment->weight }} {{ __('kg') }}</strong></div>
         <div class="col-3"><div class="small text-muted">{{ __('Pieces') }}</div><strong>{{ $shipment->pieces }}</strong></div>
-        <div class="col-3"><div class="small text-muted">{{ __('Payment') }}</div><strong>{{ $shipment->payment_method === 'cod' ? 'COD' : __('Prepaid') }}</strong></div>
+        <div class="col-3"><div class="small text-muted">{{ __('Payment') }}</div><strong>{{ $shipment->payment_method === 'cod' ? __('COD') : __('Prepaid') }}</strong></div>
         <div class="col-3"><div class="small text-muted">{{ __('To collect') }}</div><strong class="fs-5">{{ $shipment->cod_amount > 0 ? number_format($shipment->cod_amount, 2) : '0' }}</strong></div>
     </div>
     <div class="row text-center mt-2 border-top pt-2 small">

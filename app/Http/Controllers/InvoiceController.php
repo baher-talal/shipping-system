@@ -152,7 +152,7 @@ class InvoiceController extends Controller
     public function printView(Request $request, Invoice $invoice)
     {
         $this->authorizeInvoice($request, $invoice);
-        $invoice->load(['customer', 'items', 'branch']);
+        $invoice->load(['items.shipment', 'branch']);
 
         return view('invoices.print', compact('invoice'));
     }

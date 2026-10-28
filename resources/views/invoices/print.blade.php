@@ -16,28 +16,34 @@
 <div class="sheet">
     <div class="d-flex justify-content-between border-bottom pb-3 mb-3">
         <div><h3 class="mb-0">{{ __(config('app.name')) }}</h3><div class="text-muted">{{ optional($invoice->branch)->name }} {{ optional($invoice->branch)->address }}</div><div class="text-muted">{{ optional($invoice->branch)->phone }}</div></div>
-        <div class="text-end"><h4 class="mb-1">{{ __('invoice') }}</h4><div class="fw-bold">{{ $invoice->invoice_number }}</div>
+        <div class="text-end"><h4 class="mb-1">{{ __('Tax invoice') }}</h4><div class="fw-bold">{{ $invoice->invoice_number }}</div>
             <div class="small">{{ __('Date') }}: {{ $invoice->issue_date->format('Y-m-d') }}</div>
             <div class="small">{{ __('Due date') }}: {{ optional($invoice->due_date)->format('Y-m-d') ?: '-' }}</div></div>
     </div>
-    <div class="mb-3"><div class="text-muted small">{{ __('Invoice to') }}</div>
-        <div class="fw-bold">{{ $invoice->customer->name }}</div>
-        <div>{{ $invoice->customer->company }}</div>
-        <div>{{ $invoice->customer->phone }} {{ $invoice->customer->address }}</div></div>
+    @php $receivers = $invoice->items->pluck('shipment')->filter()->unique('id')->values(); @endphp
+    <div class="row g-2 mb-3">
+        @foreach($receivers as $sh)
+            <div class="col-md-{{ $receivers->count() > 1 ? 6 : 12 }}">
+                <div class="border rounded p-2 h-100">
+                    <div class="text-muted small">{{ __('Receiver details') }}@if($receivers->count() > 1) - {{ $sh->tracking_number }}@endif</div>
+                    <div class="fw-bold">{{ $sh->receiver_name }}</div>
+                    <div>{{ __('Phone') }}: {{ $sh->receiver_phone }}@if($sh->receiver_phone2) / {{ $sh->receiver_phone2 }}@endif</div>
+                    <div>{{ __('Address') }}: {{ $sh->receiver_city }}@if($sh->receiver_district) - {{ $sh->receiver_district }}@endif - {{ $sh->receiver_address }}</div>
+                    @if($sh->receiver_landmark)<div>{{ __('Landmark') }}: {{ $sh->receiver_landmark }}</div>@endif
+                </div>
+            </div>
+        @endforeach
+    </div>
     <table class="table table-bordered">
         <thead class="table-light"><tr><th style="width:50px">#</th><th>{{ __('Description') }}</th><th style="width:140px" class="text-end">{{ __('Amount') }}</th></tr></thead>
         <tbody>@foreach($invoice->items as $n => $it)<tr><td>{{ $n + 1 }}</td><td>{{ $it->description }}</td><td class="text-end">{{ $it->amount > 0 ? number_format($it->amount, 2) : '-' }}</td></tr>@endforeach</tbody>
         <tfoot>
             @php
-                $itemsT = $invoice->itemsTotal();
                 $shipT = $invoice->shippingTotal();
                 $hasDiscount = $invoice->discount > 0;
                 $hasTax = $invoice->tax_rate > 0 || $invoice->tax_amount > 0;
             @endphp
             @if($shipT > 0)
-                @if($itemsT > 0)
-                    <tr><td colspan="2" class="text-end">{{ __('Goods price') }}</td><td class="text-end">{{ number_format($itemsT, 2) }}</td></tr>
-                @endif
                 <tr class="fw-bold"><td colspan="2" class="text-end">{{ __('Shipping fee') }}</td><td class="text-end">{{ number_format($shipT, 2) }}</td></tr>
             @endif
             @if($hasDiscount || $hasTax)

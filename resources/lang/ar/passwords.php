@@ -1,9 +1,4 @@
 <?php
 
-return [
-    'reset' => 'تمت إعادة تعيين كلمة المرور.',
-    'sent' => 'تم إرسال رابط إعادة التعيين.',
-    'throttled' => 'يرجى الانتظار قبل إعادة المحاولة.',
-    'token' => 'رمز إعادة التعيين غير صالح.',
-    'user' => 'لا يوجد مستخدم بهذا البريد.',
-];
+// The texts of this group are edited in resources/lang/ar.json (keys starting with "passwords.")
+return \App\Support\LangFile::group('ar', 'passwords');

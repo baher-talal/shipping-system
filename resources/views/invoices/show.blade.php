@@ -40,15 +40,11 @@
         </tbody>
         <tfoot>
             @php
-                $itemsT = $invoice->itemsTotal();
                 $shipT = $invoice->shippingTotal();
                 $hasDiscount = $invoice->discount > 0;
                 $hasTax = $invoice->tax_rate > 0 || $invoice->tax_amount > 0;
             @endphp
             @if($shipT > 0)
-                @if($itemsT > 0)
-                    <tr><td colspan="2" class="text-end">{{ __('Goods price') }}</td><td class="text-end">{{ number_format($itemsT, 2) }}</td></tr>
-                @endif
                 <tr class="fw-bold"><td colspan="2" class="text-end">{{ __('Shipping fee') }}</td><td class="text-end">{{ number_format($shipT, 2) }}</td></tr>
             @endif
             @if($hasDiscount || $hasTax)

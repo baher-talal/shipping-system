@@ -43,7 +43,7 @@
     <div class="table-responsive">
         <table class="table table-hover align-middle mb-0">
             <thead><tr>
-                <th>{{ __('Tracking number') }}</th><th>{{ __('Customer') }}</th><th>{{ __('Receiver') }}</th><th>{{ __('To') }}</th><th>{{ __('Service') }}</th><th>{{ __('Cost') }}</th><th>COD</th><th>{{ __('Courier') }}</th><th>{{ __('Status') }}</th><th>{{ __('Date') }}</th><th></th>
+                <th>{{ __('Tracking number') }}</th><th>{{ __('Customer') }}</th><th>{{ __('Receiver') }}</th><th>{{ __('To') }}</th><th>{{ __('Service') }}</th><th>{{ __('Cost') }}</th><th>{{ __('COD') }}</th><th>{{ __('Courier') }}</th><th>{{ __('Status') }}</th><th>{{ __('Date') }}</th><th></th>
             </tr></thead>
             <tbody>
             @forelse($shipments as $s)
