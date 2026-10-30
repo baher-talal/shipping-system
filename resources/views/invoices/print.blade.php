@@ -15,7 +15,7 @@
 <div class="text-center no-print mt-3"><button class="btn btn-primary" onclick="window.print()">{{ __('Print') }}</button></div>
 <div class="sheet">
     <div class="d-flex justify-content-between border-bottom pb-3 mb-3">
-        <div><h3 class="mb-0">{{ __(config('app.name')) }}</h3><div class="text-muted">{{ optional($invoice->branch)->name }} {{ optional($invoice->branch)->address }}</div><div class="text-muted">{{ optional($invoice->branch)->phone }}</div></div>
+        <div><h3 class="mb-0">{{ __('APP_NAME') }}</h3><div class="text-muted">{{ optional($invoice->branch)->name }} {{ optional($invoice->branch)->address }}</div><div class="text-muted">{{ optional($invoice->branch)->phone }}</div></div>
         <div class="text-end"><h4 class="mb-1">{{ __('Tax invoice') }}</h4><div class="fw-bold">{{ $invoice->invoice_number }}</div>
             <div class="small">{{ __('Date') }}: {{ $invoice->issue_date->format('Y-m-d') }}</div>
             <div class="small">{{ __('Due date') }}: {{ optional($invoice->due_date)->format('Y-m-d') ?: '-' }}</div></div>

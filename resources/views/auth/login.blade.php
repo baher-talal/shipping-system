@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ __('Log in') }} - {{ __(config('app.name')) }}</title>
+    <title>{{ __('Log in') }} - {{ __('APP_NAME') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap{{ app()->getLocale() === 'ar' ? '.rtl' : '' }}.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
         <div class="text-end mb-2"><a href="{{ route('lang.switch', app()->getLocale() === 'ar' ? 'en' : 'ar') }}" class="btn btn-sm btn-outline-secondary"><i class="bi bi-translate"></i> {{ app()->getLocale() === 'ar' ? 'English' : 'العربية' }}</a></div>
         <div class="text-center mb-4">
             <i class="bi bi-box-seam-fill text-primary" style="font-size:3rem"></i>
-            <h4 class="mt-2 mb-0">{{ __(config('app.name')) }}</h4>
+            <h4 class="mt-2 mb-0">{{ __('APP_NAME') }}</h4>
             <small class="text-muted">{{ __('Log in to continue') }}</small>
         </div>
         <form method="post" action="{{ route('login') }}">

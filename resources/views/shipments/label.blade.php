@@ -17,7 +17,7 @@
 <div class="text-center no-print mt-3"><button class="btn btn-primary" onclick="window.print()">{{ __('Print') }}</button></div>
 <div class="label-box">
     <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
-        <div><strong class="fs-5">{{ __(config('app.name')) }}</strong><div class="small">{{ optional($shipment->branch)->name }}</div></div>
+        <div><strong class="fs-5">{{ __('APP_NAME') }}</strong><div class="small">{{ optional($shipment->branch)->name }}</div></div>
         <div class="text-end"><div class="small">{{ $shipment->created_at->format('Y-m-d') }}</div><div class="fw-bold">{{ $shipment->serviceLabel() }}</div></div>
     </div>
     <div class="text-center my-2">

@@ -16,6 +16,22 @@ A complete shipping-company management system built with **Laravel 7 / PHP 7.3 /
 | + | Invoices | Issue an invoice from a customer's shipments (any shipment, prepaid or COD), discount and tax, pay/cancel, edit/delete after issuing, print |
 | + | Reports | Period + branch + courier: summary, by status, courier and branch performance, top destinations, CSV export |
 
+## Quick start (this ready-to-run package)
+
+This package already contains `vendor/` and a configured `.env`, so you do not need Composer.
+
+1. Put the folder in `D:\xamp\htdocs\` (or anywhere) and start **Apache** and **MySQL** in XAMPP.
+2. Create the database (name from `.env`, default `shipping-system`, collation `utf8mb4_unicode_ci`) in phpMyAdmin.
+3. Create the tables, in **one** of two ways:
+   - **Import SQL (no PHP command needed):** phpMyAdmin > select the database > Import:
+     1. `database/sql/shipping_system.sql` (structure + roles + admin account)
+     2. `database/sql/shipping_system_demo_data.sql` (optional demo data)
+   - **Or with Laravel:** `php artisan migrate --seed`
+4. Run `php artisan serve` and open <http://localhost:8000>
+5. Log in: `admin@shipping.test` / `password` (change it after the first login).
+
+The system name shown in the interface is the `APP_NAME` key in `resources/lang/en.json` and `resources/lang/ar.json`.
+
 ## Requirements
 
 - PHP **7.3** or higher (up to 7.4) with: `mbstring, openssl, pdo_mysql, tokenizer, xml, ctype, json, bcmath`
